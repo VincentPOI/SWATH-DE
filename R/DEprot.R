@@ -1,5 +1,5 @@
 DEprot <- function(data,nbCond=NULL,nbRep=NULL,condName=NULL, normalization="SCALING",
-                   pvalue.treshold = 0.05, fc.treshold = 1){
+                   pvalue.threshold = 0.05, fc.threshold = 1){
 
   ##applying different normalization depending on the normalization parameter
   normalization=toupper(normalization)
@@ -9,7 +9,6 @@ DEprot <- function(data,nbCond=NULL,nbRep=NULL,condName=NULL, normalization="SCA
     data<-scale(log2(data))
   }
   else if(identical(normalization, "QUANTILE")){
-    library(preprocessCore)
     data <- log2(data)
     data <- normalize.quantiles(as.matrix(data))
   }
@@ -75,7 +74,7 @@ DEprot <- function(data,nbCond=NULL,nbRep=NULL,condName=NULL, normalization="SCA
       if(i!=j){
 
         ## Threshold
-        N<-which(p.value[i,j,]<=pvalue.treshold & abs(fc[i,j,])>=fc.treshold)
+        N<-which(p.value[i,j,]<=pvalue.threshold & abs(fc[i,j,])>=fc.threshold)
         if(length(N)!=0){
           print(paste0("comparison ", condName[i], " against ", condName[j], " : ", nrow(data[N,]), " significantly expressed proteins."))
           #Volcano plot
@@ -86,9 +85,9 @@ DEprot <- function(data,nbCond=NULL,nbRep=NULL,condName=NULL, normalization="SCA
                main = 'Volcano plot',
                xlab =sprintf("fold change %s vs %s", condName[i],condName[j]),
                ylab ="-log10(adjusted p value)",
-               abline(h = -log10(pvalue.treshold), v = c(-fc.treshold,fc.treshold)),
+               abline(h = -log10(pvalue.threshold), v = c(-fc.threshold,fc.threshold)),
                pch = 20,
-               col = ifelse(p.value[i,j,]<=pvalue.treshold & abs(fc[i,j,])>=fc.treshold, "red", "blue"))
+               col = ifelse(p.value[i,j,]<=pvalue.threshold & abs(fc[i,j,])>=fc.threshold, "red", "blue"))
           ##adding text on plot
           text(fc[i,j,][N], -log10(p.value[i,j,])[N], labels = row.names(data[N,]), cex= 0.7, pos = 2)
           dev.off()

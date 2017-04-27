@@ -36,7 +36,7 @@ fold change treshold value to select the significamtly differentially expressed 
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+blablabla
 }
 \value{
 DEprot returns a list containing the different components :
@@ -70,13 +70,11 @@ a 3D matrix of dataframes containing the protein name, the p value and the fold 
 }
 \examples{
 
-data<-read.table("SWATH.example.data.csv", sep=",", header=T, row.names = 1) # loading a dataset in a dataframe
-
-results<-DEprot(data,nbCond = 2,nbRep = 3, condName = c("control","patients"),
-                normalization = "scaling", fc.treshold = 0.5, pvalue.threshold = 0.05)
+data(SWATH.example.data)
+results<-DEprot(SWATH.example.data,nbCond = 4,nbRep = 10, condName = c("control","patients"),
+                normalization = "scaling", fc.threshold = 0.5, pvalue.threshold = 0.05)
 
 results$dataprocessed[1,2] # display the data frame of the results for the comparison of the two conditions
 
 results$DEprotein[1,2] # display the significantly expressed proteins data frame for the comparison of the two conditions
-
 }
