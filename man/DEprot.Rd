@@ -4,8 +4,7 @@
  SWATH differential expression analysis
 }
 \description{
-DEprot is use to perform a differential expression analysis on a set of SWATH mass spectrometry data.
-The functions apply different type of normalization on the dataset and calculates the foldchange and the student's test p value for the differents samples present in the data. The function produce a Volcano Plot in .svg for each comparison and tables of the results.
+DEprot is used to perform a differential expression analysis on a set of SWATH mass spectrometry protein quantification data. The functions apply different type of normalization on the dataset and calculates the foldchange and the student's test p value for the differents samples present in the data. The function produce a Volcano Plot for each comparison as well as tables of the results.
 }
 \usage{
 DEprot(data, nbCond = NULL, nbRep = NULL, condName = NULL, normalization = "SCALING",
@@ -36,42 +35,31 @@ fold change treshold value to select the significamtly differentially expressed 
 }
 }
 \details{
-blablabla
+The function takes in entry protein quantification data (issued from SWATH mass spectrometry), then it performs normalization on the dataset to reduce the noise caused by 
+This package allows to perform differential expression analysis on protein quantification data.
+The package was made for data issued from SWATH mass spectrometry used to quantify proteins in samples 
+from differents conditions 
 }
 \value{
 DEprot returns a list containing the different components :
 \item{normdata}{
 a data frame of the normalized data
 }\item{resultsTable}{
-a 3D matrix of dataframes containing the protein name, the p value and the fold change for each comparison
+a matrix of dataframes containing the protein name, the p value and the fold change for each comparison
 
 }\item{DEprotein}{
-3D matrix of dataframes containing the differentialy expressed protein name, their p value and their fold change for each comparison.
+a matrix of dataframes containing the differentialy expressed protein name, their p value and their fold change for each comparison.
 }
 
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
 \references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+exemple dataset :
+Bjelosevic S, Pascovici D, Ping H, et.al. Quantitative age-specific variability of plasma proteins in healthy neonates, children and adults. Molecular & Cellular Proteomics (March 23 2017)
 }
 \examples{
 
 data(SWATH.example.data)
-results<-DEprot(SWATH.example.data,nbCond = 4,nbRep = 10, condName = c("control","patients"),
+results<-DEprot(SWATH.example.data,nbCond = 4,nbRep = 10, condName = c("control","patients",""),
                 normalization = "scaling", fc.threshold = 0.5, pvalue.threshold = 0.05)
 
 results$dataprocessed[1,2] # display the data frame of the results for the comparison of the two conditions

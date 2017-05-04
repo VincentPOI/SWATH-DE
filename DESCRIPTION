@@ -4,9 +4,7 @@ Title: Differential expression analysis for SWATH mass spectrometrie data
 Version: 0.1.0
 Author: Vincent POISSON
 Maintainer: Vincent POISSON <v.poisson@uq.edu.au>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: GPL-2
+Description: 
 Encoding: UTF-8
 LazyData: true
 Depends: preprocessCore
