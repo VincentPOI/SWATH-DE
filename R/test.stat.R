@@ -1,7 +1,7 @@
 test.stat <- function(data, stat = "t.test" , design , contrast){
-  if(!is.data.frame(data) & !is.matrix(data)){print("the data must be a data.frame or a matrix")}
-  if(!is.data.frame(design) & !is.matrix(design)){print("the experience design must be a matrix generated from model.matrix")}
-  if(!is.data.frame(contrast) & !is.matrix(contrast)){print("the contrast matrix must be  a matrix generated from makeContrasts()")}
+  if(!is.data.frame(data) & !is.matrix(data)){stop("the data must be a data.frame or a matrix")}
+  if(!is.data.frame(design) & !is.matrix(design)){stop("the experience design must be a matrix generated from model.matrix")}
+  if(!is.data.frame(contrast) & !is.matrix(contrast)){stop("the contrast matrix must be  a matrix generated from makeContrasts()")}
 
 
   nbComp<-ncol(contrast)

@@ -1,6 +1,7 @@
-norm <- function(data, normalization="MEAN"){
 
-  if(!is.data.frame(data) & !is.matrix(data)){print("the data must be a data.frame or a matrix")}
+
+norm <- function(data, normalization="MEAN"){
+  if(!is.data.frame(data) & !is.matrix(data)){stop("the data must be a data.frame or a matrix")}
   
   normalization=toupper(normalization)
   if(identical(normalization, "MEAN")){

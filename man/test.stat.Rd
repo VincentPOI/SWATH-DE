@@ -2,7 +2,7 @@
 \alias{test.stat}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Performing statistical test and calculating fold change 
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
